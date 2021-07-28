@@ -21,6 +21,9 @@ import com.android.trovi.R;
 import com.android.trovi.ScreenData.PhoneInfo;
 import com.android.trovi.ScreenData.UserAndDateInfo;
 import com.android.trovi.Services.BackgroundService;
+import com.android.trovi.Utils.Globals;
+
+import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -34,6 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
+
+        Paper.init(this);
 
         if (!Settings.canDrawOverlays(this)) {
             //Request permission if not authorized
@@ -105,6 +110,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void configs(){
+        String[] separated = Globals.CURRENT_USER.getName().split(" ");
+        home_01.setText("Olá, "+separated[0]);
+
         UserAndDateInfo u1 = new UserAndDateInfo();
         home_03.setText(u1.checkHour());
         home_04.setText(u1.checkDate());

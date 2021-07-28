@@ -42,3 +42,4 @@ dependencies {
     //To Remember User
     implementation 'io.paperdb:paperdb:2.1'
 }
+apply plugin: 'com.google.gms.google-services'

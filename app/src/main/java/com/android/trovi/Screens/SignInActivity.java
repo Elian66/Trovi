@@ -48,6 +48,8 @@ public class SignInActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance("https://trovi-fb71e-default-rtdb.firebaseio.com/");
         table_user = database.getReference("Users");
 
+        Paper.init(this);
+
         if (!Settings.canDrawOverlays(this)) {
             //Request permission if not authorized
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
@@ -93,10 +95,6 @@ public class SignInActivity extends AppCompatActivity {
 
                     }
                 });
-
-                Intent intent = new Intent(SignInActivity.this,HomeActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
 
