@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Screens.OnboardActivity">
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/boardlay_01"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/steps_a"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_onboard_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/onboard_01"
+            android:gravity="center"
+            android:text="@string/onboard_01"
+            android:layout_marginTop="16dp"
+            android:textSize="36dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/boardlay_02"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/steps_a"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_onboard_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/onboard_04"
+            android:gravity="center"
+            android:text="@string/onboard_04"
+            android:layout_marginTop="16dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/onboard_05"
+            android:gravity="center"
+            android:text="@string/onboard_05"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/boardlay_03"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/steps_a"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_onboard_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/onboard_06"
+            android:gravity="center"
+            android:text="@string/onboard_06"
+            android:layout_marginTop="16dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/onboard_07"
+            android:gravity="center"
+            android:text="@string/onboard_07"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:textAllCaps="false"
+            android:text="@string/onboard_08"
+            android:id="@+id/onboard_08"
+            android:textColor="@color/white"
+            android:background="@drawable/border_btn"
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginHorizontal="32dp"
+        android:weightSum="2"
+        android:id="@+id/steps_a"
+        android:orientation="horizontal"
+        android:layout_marginVertical="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/onboard_02"
+            android:text="@string/onboard_02"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/steps_src"
+            android:src="@drawable/ic_steps_a"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/onboard_03"
+            android:gravity="right"
+            android:text="@string/onboard_03"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>

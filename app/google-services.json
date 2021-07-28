@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993994219715",
+    "project_id": "trovi-fb71e",
+    "storage_bucket": "trovi-fb71e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993994219715:android:85411222ff190575be0276",
+        "android_client_info": {
+          "package_name": "com.android.trovi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993994219715-fs41ljk1dudv0v4pcnrok4ju68meq49f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxAemat9ef82-vnZ6TK3j7Pty6_tlkmWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993994219715-fs41ljk1dudv0v4pcnrok4ju68meq49f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Trovi</string>
+
+    <string name="onboard_01">Seja Bem-Vindo ao Trovi!</string>
+    <string name="onboard_02">Pular</string>
+    <string name="onboard_03">Próximo</string>
+    <string name="onboard_04">Não se preocupe em mudar o toque do seu celular</string>
+    <string name="onboard_05">Alteramos automaticamente seu toque, luminosidade e volume com base no seu local ou agenda</string>
+    <string name="onboard_06">Não se preocupe em mudar o toque do seu celular</string>
+    <string name="onboard_07">Alteramos automaticamente seu toque, luminosidade e volume com base no seu local ou agenda</string>
+    <string name="onboard_08">Vamos começar</string>
+
+    <string name="signin_01">Seja bem-vindo</string>
+    <string name="signin_02">Faça login para continuar</string>
+    <string name="signin_03">Número de Telefone</string>
+    <string name="signin_04">Senha</string>
+    <string name="signin_05">Esqueci a senha</string>
+    <string name="signin_06">Entrar</string>
+    <string name="signin_07">ou</string>
+    <string name="signin_08">Entrar com o Google</string>
+    <string name="signin_09">Não possui conta?</string>
+    <string name="signin_10">Fazer cadastro</string>
+
+    <string name="signup_01">Cadastro</string>
+    <string name="signup_02">Nome de Usuário</string>
+    <string name="signup_03">E-mail</string>
+    <string name="signup_04">Número de Telefone</string>
+    <string name="signup_05">Senha</string>
+    <string name="signup_06">Finalizar Cadastro</string>
+    <string name="signup_07">ou</string>
+    <string name="signup_08">Entrar com o Google</string>
+    <string name="signup_09">Já possui conta?</string>
+    <string name="signup_10">Fazer login</string>
+
+    <string name="home_01">Olá, </string>
+    <string name="home_02">Status do seu telefone</string>
+    <string name="home_03">00:00 AM</string>
+    <string name="home_04">01 de Jan</string>
+    <string name="home_05">Toque</string>
+    <string name="home_06">Volume</string>
+    <string name="home_07">Luz</string>
+    <string name="home_08">Bateria</string>
+    <string name="home_09">Reuniões marcadas:</string>
+
+    <string name="ring_01">Silencioso</string>
+    <string name="ring_02">Vibrar</string>
+    <string name="ring_03">Som</string>
+</resources>
