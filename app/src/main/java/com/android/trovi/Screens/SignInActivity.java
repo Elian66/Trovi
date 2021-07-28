@@ -3,9 +3,13 @@ package com.android.trovi.Screens;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +24,7 @@ import android.widget.Toast;
 import com.android.trovi.Models.UserModel;
 import com.android.trovi.R;
 import com.android.trovi.Utils.Globals;
+import com.android.trovi.Utils.Permissions;
 import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +38,16 @@ public class SignInActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference table_user;
+
+    private String[] permissoesNecessarias = new String[]{
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.READ_CALENDAR,
+            Manifest.permission.WRITE_CALENDAR,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
 
     EditText signin_03,signin_04;
     TextView signin_01,signin_02,signin_05;
@@ -57,6 +72,11 @@ public class SignInActivity extends AppCompatActivity {
             startActivityForResult(intent, 0);
         }
 
+        if (!Settings.System.canWrite(this)) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+            startActivity(intent);
+        }
+
         NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Check if the notification policy access has been granted for the app.
@@ -64,6 +84,8 @@ public class SignInActivity extends AppCompatActivity {
             Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
             startActivity(intent);
         }
+
+        Permissions.validaPermissoes(1,SignInActivity.this,permissoesNecessarias);
 
         initAll();
 
@@ -133,5 +155,33 @@ public class SignInActivity extends AppCompatActivity {
         signin_08_1.setTypeface(poppins_regular);
         signin_09.setTypeface(poppins_regular);
         signin_10.setTypeface(poppins_regular);
+    }
+
+    public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults){
+
+        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
+
+        for (int resultado:grantResults){
+            if (resultado== PackageManager.PERMISSION_DENIED){
+                alertaValidacaoPermissao();
+            }
+        }
+
+    }
+
+    private void alertaValidacaoPermissao(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Permissões negadas");
+        builder.setMessage("Para utilizar este app, é necessário aceitar as permissões");
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 }

@@ -21,7 +21,7 @@ public class FDB {
         String completePath = "edb."+ Globals.LINE_LOCATION+"."+Globals.LINE_TIME+"."+Globals.LINE_BATTERY+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/FDB/"+completePath;
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePath;
 
         File file = new File(directory_path);
         if (!file.exists()) {
@@ -81,13 +81,13 @@ public class FDB {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/FDB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathA);
 
         final File fileb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/FDB/"+completePathB);
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathB);
 
         final File filec = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/FDB/"+completePathC);
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathC);
 
         try{
             int numLine = 0;
@@ -180,7 +180,7 @@ public class FDB {
         String completePath = "fdb."+Globals.LINE_LOCATION+"."+Globals.LINE_TIME+"."+Globals.LINE_BATTERY+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/FDB/"+completePath;
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePath;
 
         //Create new Files with this data
         File file = new File(directory_path);

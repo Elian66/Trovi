@@ -12,7 +12,7 @@ public class PlacesStorage {
         String namePlace = latitude+","+longitude;
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Places/";
+                + "/Documents/Trovi/Users/Places/";
 
         File file = new File(directory_path);
         if (!file.exists()) {

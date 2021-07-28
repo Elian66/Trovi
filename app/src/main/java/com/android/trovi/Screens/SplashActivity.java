@@ -87,7 +87,6 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }else {
                     Toast.makeText(SplashActivity.this, "Este número ainda não possui cadastro no Trovi", Toast.LENGTH_SHORT).show();
-
                 }
             }
 

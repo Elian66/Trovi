@@ -24,7 +24,7 @@ public class ADB {
         String completePath = "adb."+Globals.LINE_LOCATION+"."+Globals.LINE_TIME+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePath;
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePath;
 
         File file = new File(directory_path);
         if (!file.exists()) {
@@ -84,13 +84,13 @@ public class ADB {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathA);
 
         final File fileb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathB);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathB);
 
         final File filec = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathC);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathC);
 
         try{
             int numLine = 0;
@@ -183,7 +183,7 @@ public class ADB {
         String completePath = "adb."+Globals.LINE_LOCATION+"."+Globals.LINE_TIME+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePath;
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePath;
 
         //Create new Files with this data
         File file = new File(directory_path);

@@ -49,21 +49,21 @@ public class GetMediums {
         BufferedReader reader;
 
         final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathAa);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathAa);
         final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathAb);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathAb);
         final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathAc);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathAc);
 
         final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathBa);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathBa);
         final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathBb);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathBb);
         final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathBc);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathBc);
 
         final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathCa);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathCa);
 
         try {
             BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
@@ -112,21 +112,21 @@ public class GetMediums {
         BufferedReader reader;
 
         final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathAa);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathAa);
         final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathAb);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathAb);
         final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathAc);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathAc);
 
         final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathBa);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathBa);
         final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathBb);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathBb);
         final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathBc);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathBc);
 
         final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathCa);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathCa);
 
         try {
             BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
@@ -175,21 +175,21 @@ public class GetMediums {
         BufferedReader reader;
 
         final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathAa);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathAa);
         final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathAb);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathAb);
         final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathAc);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathAc);
 
         final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathBa);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathBa);
         final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathBb);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathBb);
         final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathBc);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathBc);
 
         final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathCa);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathCa);
 
         try {
             BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
@@ -238,21 +238,21 @@ public class GetMediums {
         BufferedReader reader;
 
         final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathAa);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathAa);
         final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathAb);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathAb);
         final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathAc);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathAc);
 
         final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathBa);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathBa);
         final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathBb);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathBb);
         final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathBc);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathBc);
 
         final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathCa);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathCa);
 
         try {
             BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
@@ -301,21 +301,21 @@ public class GetMediums {
         BufferedReader reader;
 
         final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathAa);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathAa);
         final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathAb);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathAb);
         final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathAc);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathAc);
 
         final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathBa);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathBa);
         final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathBb);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathBb);
         final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathBc);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathBc);
 
         final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathCa);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathCa);
 
         try {
             BufferedReader brAa = new BufferedReader(new FileReader(fileAa));

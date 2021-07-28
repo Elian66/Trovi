@@ -338,7 +338,7 @@ public class BackgroundService extends Service {
         FileInputStream is;
         BufferedReader reader;
         final File file = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Places/"+ "/" + "listPlaces.txt");
+                + "/Documents/Trovi/Users/Places/"+ "/" + "listPlaces.txt");
 
         try{
             int numLine = 0;

@@ -40,7 +40,7 @@ public class CheckMetrics {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/ADB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/ADB/"+completePathA);
 
         try{
             int numLine = 0;
@@ -76,7 +76,7 @@ public class CheckMetrics {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/BDB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/BDB/"+completePathA);
 
         try{
             int numLine = 0;
@@ -112,7 +112,7 @@ public class CheckMetrics {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathA);
 
         try{
             int numLine = 0;
@@ -148,7 +148,7 @@ public class CheckMetrics {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/DDB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/DDB/"+completePathA);
 
         try{
             int numLine = 0;
@@ -184,7 +184,7 @@ public class CheckMetrics {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/EDB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/EDB/"+completePathA);
 
         try{
             int numLine = 0;

@@ -22,7 +22,7 @@ public class CDB {
         String completePath = "cdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_CONNECTION+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePath;
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePath;
 
         File file = new File(directory_path);
         if (!file.exists()) {
@@ -82,13 +82,13 @@ public class CDB {
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathA);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathA);
 
         final File fileb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathB);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathB);
 
         final File filec = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePathC);
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePathC);
 
         try{
             int numLine = 0;
@@ -181,7 +181,7 @@ public class CDB {
         String completePath = "cdb."+Globals.LINE_LOCATION+"."+Globals.LINE_CONNECTION+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/eliancap66/Logs/CDB/"+completePath;
+                + "/Documents/Trovi/Users/Logs/CDB/"+completePath;
 
         //Create new Files with this data
         File file = new File(directory_path);
