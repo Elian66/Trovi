@@ -31,6 +31,10 @@ public class OnboardActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("firstStart", false);
+        editor.putBoolean("firstCollect", true);
+        editor.putBoolean("firstChanges", true);
+        editor.putBoolean("allowCollect", false);
+        editor.putBoolean("allowChanges", false);
         editor.apply();
 
         initAll();

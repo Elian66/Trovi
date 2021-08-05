@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.trovi">
 
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -32,14 +33,16 @@
         android:roundIcon="@drawable/ic_icon_trovi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Screens.ProfileActivity"></activity>
+
         <service
             android:name=".Services.ChangeService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
         <service
             android:name=".Services.BackgroundService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".AutoUpdates.DummyBrightnessActivity"

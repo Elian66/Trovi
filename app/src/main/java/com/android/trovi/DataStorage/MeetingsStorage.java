@@ -1,7 +1,6 @@
 package com.android.trovi.DataStorage;
 
 import android.os.Environment;
-import android.util.Log;
 
 import com.android.trovi.Utils.Globals;
 
@@ -15,13 +14,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FDB {
-    public void createDB(){
-
-        String completePath = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/";
+public class MeetingsStorage {
+    public void createFile(){
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/Logs/FDB/"+completePath;
+                + "/Documents/Trovi/Users/Meetings/";
 
         File file = new File(directory_path);
         if (!file.exists()) {
@@ -55,10 +52,11 @@ public class FDB {
             //Handle exception
         }
 
-        readDB();
+        readADB();
+
     }
 
-    public void readDB(){
+    public void readADB(){
 
         List<Integer> listA = new ArrayList<Integer>();
         String mediaA = "";
@@ -73,21 +71,17 @@ public class FDB {
         List<Integer> listC = new ArrayList<Integer>();
         String modaC = "";
 
-        String completePathA = "fdb."+Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/volumeCollect.txt";
-        String completePathB = "fdb."+Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/brightCollect.txt";
-        String completePathC = "fdb."+Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/ringCollect.txt";
-
         FileInputStream is;
         BufferedReader reader;
 
         final File filea = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/Logs/FDB/"+completePathA);
+                + "/Documents/Trovi/Users/Meetings/volumeCollect.txt");
 
         final File fileb = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/Logs/FDB/"+completePathB);
+                + "/Documents/Trovi/Users/Meetings/brightCollect.txt");
 
         final File filec = new File(Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/Logs/FDB/"+completePathC);
+                + "/Documents/Trovi/Users/Meetings/ringCollect.txt");
 
         try{
             int numLine = 0;
@@ -172,15 +166,13 @@ public class FDB {
             ioe.printStackTrace();
         }
 
-        finishDB(mediaA,medianaA,modaA,mediaB,medianaB,modaB,modaC);
+        finishADB(mediaA,medianaA,modaA,mediaB,medianaB,modaB,modaC);
     }
 
-    public void finishDB(String mediaA, String medianaA, String modaA, String mediaB,String medianaB, String modaB, String modaC){
-
-        String completePath = "fdb."+Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/";
+    public void finishADB(String mediaA, String medianaA, String modaA, String mediaB,String medianaB, String modaB, String modaC){
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()
-                + "/Documents/Trovi/Users/Logs/FDB/"+completePath;
+                + "/Documents/Trovi/Users/Meetings/";
 
         //Create new Files with this data
         File file = new File(directory_path);

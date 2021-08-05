@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -39,15 +40,7 @@ public class SignInActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference table_user;
 
-    private String[] permissoesNecessarias = new String[]{
-            Manifest.permission.RECORD_AUDIO,
-            Manifest.permission.READ_CALENDAR,
-            Manifest.permission.WRITE_CALENDAR,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-    };
+    private String[] permissoesNecessarias;
 
     EditText signin_03,signin_04;
     TextView signin_01,signin_02,signin_05;
@@ -59,6 +52,29 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         getWindow().setStatusBarColor(this.getResources().getColor(R.color.white));
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P){
+            permissoesNecessarias = new String[]{
+                    Manifest.permission.RECORD_AUDIO,
+                    Manifest.permission.READ_CALENDAR,
+                    Manifest.permission.WRITE_CALENDAR,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            };
+        }else {
+            permissoesNecessarias = new String[]{
+                    Manifest.permission.RECORD_AUDIO,
+                    Manifest.permission.READ_CALENDAR,
+                    Manifest.permission.WRITE_CALENDAR,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+            };
+        }
 
         database = FirebaseDatabase.getInstance("https://trovi-fb71e-default-rtdb.firebaseio.com/");
         table_user = database.getReference("Users");

@@ -19,6 +19,9 @@ public class CheckMetrics {
     public static boolean CDB_STATUS = false;
     public static boolean DDB_STATUS = false;
     public static boolean EDB_STATUS = false;
+    public static boolean FDB_STATUS = false;
+    public static boolean GDB_STATUS = false;
+    public static boolean HDB_STATUS = false;
     public static int TOTAL_METRICS = 0;
 
     public void init(){
@@ -27,6 +30,9 @@ public class CheckMetrics {
         readC();
         readD();
         readE();
+        readF();
+        readG();
+        readH();
 
         GetMediums gm = new GetMediums();
         gm.init();
@@ -204,6 +210,114 @@ public class CheckMetrics {
 
                     GetMediums gm = new GetMediums();
                     gm.readE();
+                }
+
+            }
+
+        } catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void readF(){
+        String completePathA = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/volumeCollect.txt";
+
+        FileInputStream is;
+        BufferedReader reader;
+
+        final File filea = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathA);
+
+        try{
+            int numLine = 0;
+            if (filea.exists()) {
+                is = new FileInputStream(filea);
+                reader = new BufferedReader(new InputStreamReader(is));
+                String line = reader.readLine();
+                while(line != null){
+
+                    numLine++;
+                    line = reader.readLine();
+                }
+
+                if (numLine>39){
+                    FDB_STATUS = true;
+                    TOTAL_METRICS++;
+
+                    GetMediums gm = new GetMediums();
+                    gm.readF();
+                }
+
+            }
+
+        } catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void readG(){
+        String completePathA = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/volumeCollect.txt";
+
+        FileInputStream is;
+        BufferedReader reader;
+
+        final File filea = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathA);
+
+        try{
+            int numLine = 0;
+            if (filea.exists()) {
+                is = new FileInputStream(filea);
+                reader = new BufferedReader(new InputStreamReader(is));
+                String line = reader.readLine();
+                while(line != null){
+
+                    numLine++;
+                    line = reader.readLine();
+                }
+
+                if (numLine>39){
+                    GDB_STATUS = true;
+                    TOTAL_METRICS++;
+
+                    GetMediums gm = new GetMediums();
+                    gm.readG();
+                }
+
+            }
+
+        } catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void readH(){
+        String completePathA = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/volumeCollect.txt";
+
+        FileInputStream is;
+        BufferedReader reader;
+
+        final File filea = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathA);
+
+        try{
+            int numLine = 0;
+            if (filea.exists()) {
+                is = new FileInputStream(filea);
+                reader = new BufferedReader(new InputStreamReader(is));
+                String line = reader.readLine();
+                while(line != null){
+
+                    numLine++;
+                    line = reader.readLine();
+                }
+
+                if (numLine>39){
+                    HDB_STATUS = true;
+                    TOTAL_METRICS++;
+
+                    GetMediums gm = new GetMediums();
+                    gm.readH();
                 }
 
             }

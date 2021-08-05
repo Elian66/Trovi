@@ -26,13 +26,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/home_01"
-                    android:text="@string/home_01"
-                    android:textColor="@color/white"
-                    android:textSize="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/home_settings"
+                        android:tint="@color/white"
+                        android:src="@drawable/ic_settings_black_24dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp" />
+
+                    <TextView
+                        android:layout_marginLeft="8dp"
+                        android:id="@+id/home_01"
+                        android:text="@string/home_01"
+                        android:textColor="@color/white"
+                        android:textSize="24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/home_02"
@@ -98,6 +114,8 @@
                     android:layout_height="wrap_content" />
 
                 <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:id="@+id/home_ring"
                     android:src="@drawable/ic_vector_a"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center"
@@ -133,6 +151,8 @@
                     android:layout_height="wrap_content" />
 
                 <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:id="@+id/home_volume"
                     android:src="@drawable/ic_vector_b"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center"
@@ -168,7 +188,9 @@
                     android:layout_height="wrap_content" />
 
                 <ImageView
-                    android:src="@drawable/ic_vector_c"
+                    android:tint="@color/colorPrimary"
+                    android:id="@+id/home_bright"
+                    android:src="@drawable/ic_brightness_medium_black_24dp"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center"
                     android:layout_width="40dp"
@@ -203,6 +225,8 @@
                     android:layout_height="wrap_content" />
 
                 <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:id="@+id/home_battery"
                     android:src="@drawable/ic_vector_d"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center"
@@ -222,6 +246,144 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginHorizontal="16dp"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/home_collect_text"
+                android:id="@+id/home_collect_text"
+                android:textColor="@color/textColor"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/home_collect_status_01"
+                    android:id="@+id/home_collect_status"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:gravity="right"
+                    android:text="@string/home_collect_button_01"
+                    android:id="@+id/home_collect_button"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:text="@string/home_changes_text"
+                android:id="@+id/home_changes_text"
+                android:textColor="@color/textColor"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/home_changes_status_01"
+                    android:id="@+id/home_changes_status"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:gravity="right"
+                    android:text="@string/home_changes_button_01"
+                    android:id="@+id/home_changes_button"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginHorizontal="16dp"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/home_09"
+                android:id="@+id/home_09"
+                android:textColor="@color/textColor"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="16dp"
+                android:id="@+id/recycler_meetings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ImageView
+                android:id="@+id/home_nomeet"
+                android:layout_marginTop="16dp"
+                android:visibility="visible"
+                android:src="@drawable/ic_no_meet"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
 
     </LinearLayout>
 

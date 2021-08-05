@@ -45,4 +45,36 @@
     <string name="ring_01">Silencioso</string>
     <string name="ring_02">Vibrar</string>
     <string name="ring_03">Som</string>
+
+    <string name="allowcollect_title">Permitir que o Trovi inicie seu processo de coleta?</string>
+    <string name="allowcollect_message">Isso servirá para que o aplicativo comece a entender o modo como você usa seu celular no dia a dia</string>
+    <string name="allowcollect_button">Permitir</string>
+
+    <string name="home_collect_text">Sistema de coleta:</string>
+    <string name="home_collect_status_01">Desativado</string>
+    <string name="home_collect_button_01">Ativar</string>
+    <string name="home_collect_status_02">Ativado</string>
+    <string name="home_collect_button_02">Desativar</string>
+
+    <string name="allowchanges_title">Permitir que o Trovi faça modificações automáticas no sistema?</string>
+    <string name="allowchanges_message">Isto servirá para que você tenha uma melhor experiência ao usar seu smartphone</string>
+    <string name="allowchanges_button">Permitir</string>
+
+    <string name="home_changes_text">Atualizações automáticas:</string>
+    <string name="home_changes_status_01">Desativado</string>
+    <string name="home_changes_button_01">Ativar</string>
+    <string name="home_changes_status_02">Ativado</string>
+    <string name="home_changes_button_02">Desativar</string>
+    <string name="home_changes_status_03">Indisponível no momento</string>
+    <string name="home_changes_button_03">O que é isso?</string>
+
+    <string name="home_ask_title">Seu dispositivo está em fase de aprendizado</string>
+    <string name="home_ask_message">Estamos coletando dados para aprendermos melhor como configurar seu aparelho de acordo com o seu contexto atual. Siga utilizando seu celular e em breve faremos as modificações automáticas para você!</string>
+    <string name="home_ask_button">Entendi</string>
+
+    <string name="profile_name">Nome</string>
+    <string name="profile_account">Minha conta</string>
+    <string name="profile_preferences">Preferências</string>
+    <string name="profile_exit">Sair</string>
+
 </resources>

@@ -41,5 +41,8 @@ dependencies {
 
     //To Remember User
     implementation 'io.paperdb:paperdb:2.1'
+
+    //Circle Images
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }
 apply plugin: 'com.google.gms.google-services'

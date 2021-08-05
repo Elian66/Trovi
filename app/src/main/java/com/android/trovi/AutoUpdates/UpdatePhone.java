@@ -47,6 +47,27 @@ public class UpdatePhone {
             rmoTotal += Integer.parseInt(Globals.EDB_RING);
         }
 
+        if (CheckMetrics.FDB_STATUS){
+            metrics++;
+            volTotal += Integer.parseInt(Globals.FDB_VOLUME);
+            briTotal += Integer.parseInt(Globals.FDB_BRIGHT);
+            rmoTotal += Integer.parseInt(Globals.FDB_RING);
+        }
+
+        if (CheckMetrics.GDB_STATUS){
+            metrics++;
+            volTotal += Integer.parseInt(Globals.GDB_VOLUME);
+            briTotal += Integer.parseInt(Globals.GDB_BRIGHT);
+            rmoTotal += Integer.parseInt(Globals.GDB_RING);
+        }
+
+        if (CheckMetrics.HDB_STATUS){
+            metrics++;
+            volTotal += Integer.parseInt(Globals.GDB_VOLUME);
+            briTotal += Integer.parseInt(Globals.GDB_BRIGHT);
+            rmoTotal += Integer.parseInt(Globals.GDB_RING);
+        }
+
         if (CheckMetrics.TOTAL_METRICS>2){
             int volume = ((int) volTotal/metrics);
             int bright = ((int) briTotal/metrics);

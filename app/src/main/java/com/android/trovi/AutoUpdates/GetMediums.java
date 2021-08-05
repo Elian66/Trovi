@@ -23,6 +23,9 @@ public class GetMediums {
             readC();
             readD();
             readE();
+            readF();
+            readG();
+            readH();
 
             UpdatePhone up = new UpdatePhone();
             up.makeChanges();
@@ -339,6 +342,195 @@ public class GetMediums {
             Globals.EDB_VOLUME = Integer.toString(mA);
             Globals.EDB_BRIGHT = Integer.toString(mB);
             Globals.EDB_RING   = brCa.readLine();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void readF(){
+
+        int mA = 0;
+        int mB = 0;
+        int mC = 0;
+
+        String completePathAa = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/volumeMedia.txt";
+        String completePathAb = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/volumeMediana.txt";
+        String completePathAc = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/volumeModa.txt";
+
+        String completePathBa = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/brightMedia.txt";
+        String completePathBb = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/brightMediana.txt";
+        String completePathBc = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/brightModa.txt";
+
+        String completePathCa = "fdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_SAVING+"/ringModa.txt";
+
+        FileInputStream is;
+        BufferedReader reader;
+
+        final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathAa);
+        final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathAb);
+        final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathAc);
+
+        final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathBa);
+        final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathBb);
+        final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathBc);
+
+        final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/FDB/"+completePathCa);
+
+        try {
+            BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
+            BufferedReader brAb = new BufferedReader(new FileReader(fileAb));
+            BufferedReader brAc = new BufferedReader(new FileReader(fileAc));
+            mA += Integer.parseInt(brAa.readLine());
+            mA += Integer.parseInt(brAb.readLine());
+            mA += Integer.parseInt(brAc.readLine());
+            mA = mA/3;
+
+            BufferedReader brBa = new BufferedReader(new FileReader(fileBa));
+            BufferedReader brBb = new BufferedReader(new FileReader(fileBb));
+            BufferedReader brBc = new BufferedReader(new FileReader(fileBc));
+            mB += Integer.parseInt(brBa.readLine());
+            mB += Integer.parseInt(brBb.readLine());
+            mB += Integer.parseInt(brBc.readLine());
+            mB = mB/3;
+
+            BufferedReader brCa = new BufferedReader(new FileReader(fileCa));
+
+            Globals.FDB_VOLUME = Integer.toString(mA);
+            Globals.FDB_BRIGHT = Integer.toString(mB);
+            Globals.FDB_RING   = brCa.readLine();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void readG(){
+
+        int mA = 0;
+        int mB = 0;
+        int mC = 0;
+
+        String completePathAa = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/volumeMedia.txt";
+        String completePathAb = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/volumeMediana.txt";
+        String completePathAc = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/volumeModa.txt";
+
+        String completePathBa = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/brightMedia.txt";
+        String completePathBb = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/brightMediana.txt";
+        String completePathBc = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/brightModa.txt";
+
+        String completePathCa = "gdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_BLUETOOTH+"/ringModa.txt";
+
+        FileInputStream is;
+        BufferedReader reader;
+
+        final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathAa);
+        final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathAb);
+        final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathAc);
+
+        final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathBa);
+        final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathBb);
+        final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathBc);
+
+        final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/GDB/"+completePathCa);
+
+        try {
+            BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
+            BufferedReader brAb = new BufferedReader(new FileReader(fileAb));
+            BufferedReader brAc = new BufferedReader(new FileReader(fileAc));
+            mA += Integer.parseInt(brAa.readLine());
+            mA += Integer.parseInt(brAb.readLine());
+            mA += Integer.parseInt(brAc.readLine());
+            mA = mA/3;
+
+            BufferedReader brBa = new BufferedReader(new FileReader(fileBa));
+            BufferedReader brBb = new BufferedReader(new FileReader(fileBb));
+            BufferedReader brBc = new BufferedReader(new FileReader(fileBc));
+            mB += Integer.parseInt(brBa.readLine());
+            mB += Integer.parseInt(brBb.readLine());
+            mB += Integer.parseInt(brBc.readLine());
+            mB = mB/3;
+
+            BufferedReader brCa = new BufferedReader(new FileReader(fileCa));
+
+            Globals.GDB_VOLUME = Integer.toString(mA);
+            Globals.GDB_BRIGHT = Integer.toString(mB);
+            Globals.GDB_RING   = brCa.readLine();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void readH(){
+
+        int mA = 0;
+        int mB = 0;
+        int mC = 0;
+
+        String completePathAa = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/volumeMedia.txt";
+        String completePathAb = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/volumeMediana.txt";
+        String completePathAc = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/volumeModa.txt";
+
+        String completePathBa = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/brightMedia.txt";
+        String completePathBb = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/brightMediana.txt";
+        String completePathBc = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/brightModa.txt";
+
+        String completePathCa = "hdb."+ Globals.LINE_LOCATION+"."+Globals.LINE_HEADPHONE+"/ringModa.txt";
+
+        FileInputStream is;
+        BufferedReader reader;
+
+        final File fileAa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathAa);
+        final File fileAb = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathAb);
+        final File fileAc = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathAc);
+
+        final File fileBa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathBa);
+        final File fileBb = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathBb);
+        final File fileBc = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathBc);
+
+        final File fileCa = new File(Environment.getExternalStorageDirectory().getPath()
+                + "/Documents/Trovi/Users/Logs/HDB/"+completePathCa);
+
+        try {
+            BufferedReader brAa = new BufferedReader(new FileReader(fileAa));
+            BufferedReader brAb = new BufferedReader(new FileReader(fileAb));
+            BufferedReader brAc = new BufferedReader(new FileReader(fileAc));
+            mA += Integer.parseInt(brAa.readLine());
+            mA += Integer.parseInt(brAb.readLine());
+            mA += Integer.parseInt(brAc.readLine());
+            mA = mA/3;
+
+            BufferedReader brBa = new BufferedReader(new FileReader(fileBa));
+            BufferedReader brBb = new BufferedReader(new FileReader(fileBb));
+            BufferedReader brBc = new BufferedReader(new FileReader(fileBc));
+            mB += Integer.parseInt(brBa.readLine());
+            mB += Integer.parseInt(brBb.readLine());
+            mB += Integer.parseInt(brBc.readLine());
+            mB = mB/3;
+
+            BufferedReader brCa = new BufferedReader(new FileReader(fileCa));
+
+            Globals.HDB_VOLUME = Integer.toString(mA);
+            Globals.HDB_BRIGHT = Integer.toString(mB);
+            Globals.HDB_RING   = brCa.readLine();
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
