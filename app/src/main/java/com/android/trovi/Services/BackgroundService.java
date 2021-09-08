@@ -101,14 +101,24 @@ public class BackgroundService extends Service {
 
     private SensorManager sensorManager;
     private Sensor lightSensor;
-    private SensorEventListener lightEventListener;
+    private SensorEventListener lightEventListener,sensorEventListener;
     private float maxValue;
+
+    Sensor pressureSensor;
 
     public double totalBrilho = 0;
     public int totalTestesBri = 0;
 
     public double totalVolume = 0;
     public int totalTestesVol = 0;
+
+    String importance_time,importance_battery,importance_connection,importance_saving;
+    String importance_localbright,importance_localvolume,importance_bluetooth,importance_headphone;
+    boolean allowChanges,allowCollect,brightness_sensibility,save_battery_bright,comfortable_view;
+    boolean louder_volume,meeting_ringmode,meeting_prior,save_places;
+    boolean collected_time,collected_battery,collected_connection,collected_saving;
+    boolean collected_localbright,collected_localvolume,collected_bluetooth,collected_headphone;
+    boolean update_volume,update_bright,update_ringmode;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -162,9 +172,40 @@ public class BackgroundService extends Service {
 
     private void configurar(){
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        final boolean allowCollect = prefs.getBoolean("allowCollect", true);
+        allowChanges = prefs.getBoolean("allowChanges", true);
+        allowCollect = prefs.getBoolean("allowCollect", true);
+        brightness_sensibility = prefs.getBoolean("brightness_sensibility",true);
+        save_battery_bright = prefs.getBoolean("save_battery_bright",true);
+        comfortable_view = prefs.getBoolean("comfortable_view",true);
+        louder_volume = prefs.getBoolean("louder_volume",true);
+        meeting_ringmode = prefs.getBoolean("meeting_ringmode",true);
+        meeting_prior = prefs.getBoolean("meeting_prior",true);
+        save_places = prefs.getBoolean("save_places",true);
 
+        collected_time = prefs.getBoolean("collected_time",true);
+        collected_battery = prefs.getBoolean("collected_battery",true);
+        collected_connection = prefs.getBoolean("collected_connection",true);
+        collected_saving = prefs.getBoolean("collected_saving",true);
+        collected_localbright = prefs.getBoolean("collected_localbright",true);
+        collected_localvolume = prefs.getBoolean("collected_localvolume",true);
+        collected_bluetooth = prefs.getBoolean("collected_bluetooth",true);
+        collected_headphone = prefs.getBoolean("collected_headphone",true);
+
+        importance_time = prefs.getString("importance_time","");
+        importance_battery = prefs.getString("importance_battery","");
+        importance_connection = prefs.getString("importance_connection","");
+        importance_saving = prefs.getString("importance_saving","");
+        importance_localbright = prefs.getString("importance_localbright","");
+        importance_localvolume = prefs.getString("importance_localvolume","");
+        importance_bluetooth = prefs.getString("importance_bluetooth","");
+        importance_headphone = prefs.getString("importance_headphone","");
+
+        update_volume = prefs.getBoolean("update_volume",true);
+        update_bright = prefs.getBoolean("update_bright",true);
+        update_ringmode = prefs.getBoolean("update_ringmode",true);
+        
         if (allowCollect){
+            Log.d("RAWDATA","permite coelta");
             //BATTERY DATA
             this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
@@ -223,140 +264,116 @@ public class BackgroundService extends Service {
             sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
             lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-
             //MAKE CHANGES
 
             //First check if it's meeting time
             //Save Meetings
             String interests = "";
 
-            MeetingsCollect mc = new MeetingsCollect();
-            for(String str: mc.readCalendarEvent(getBaseContext())){
-                String[] separated = str.split(":@:");
-                final String reuniaoNome = separated[0];
-                final String reuniaoData = separated[1];
+            //Check if MeetingPrior is activate on PreferencesActivity.java
+            if (meeting_prior){
+                MeetingsCollect mc = new MeetingsCollect();
+                for(String str: mc.readCalendarEvent(getBaseContext())){
+                    String[] separated = str.split(":@:");
+                    final String reuniaoNome = separated[0];
+                    final String reuniaoData = separated[1];
 
-                String[] rDataSplit = reuniaoData.split(" ");
-                final String data01 = rDataSplit[0];
-                final String data02 = rDataSplit[1];
-                final String data03 = rDataSplit[2];
+                    String[] rDataSplit = reuniaoData.split(" ");
+                    final String data01 = rDataSplit[0];
+                    final String data02 = rDataSplit[1];
+                    final String data03 = rDataSplit[2];
 
-                String[] horaSplit = data02.split(":");
-                String hora;
-                if (data03.equals("AM")){
-                    hora = horaSplit[0];
-                }else{
-                    hora = Integer.toString(12+Integer.parseInt(horaSplit[0]));
-                }
-                String minu = horaSplit[1];
-                String segu = horaSplit[2];
+                    String[] horaSplit = data02.split(":");
+                    String hora;
+                    if (data03.equals("AM")){
+                        hora = horaSplit[0];
+                    }else{
+                        hora = Integer.toString(12+Integer.parseInt(horaSplit[0]));
+                    }
+                    String minu = horaSplit[1];
+                    String segu = horaSplit[2];
 
-                Date date = new Date();
-                String dayOfTheWeek = (String) DateFormat.format("EEEE", date); // Thursday
-                String day2         = (String) DateFormat.format("dd",   date); // 20
-                String monthString  = (String) DateFormat.format("MMM",  date); // Jun
-                String monthNumber  = (String) DateFormat.format("MM",   date); // 06
-                String year         = (String) DateFormat.format("yyyy", date); // 2013
+                    Date date = new Date();
+                    String dayOfTheWeek = (String) DateFormat.format("EEEE", date); // Thursday
+                    String day2         = (String) DateFormat.format("dd",   date); // 20
+                    String monthString  = (String) DateFormat.format("MMM",  date); // Jun
+                    String monthNumber  = (String) DateFormat.format("MM",   date); // 06
+                    String year         = (String) DateFormat.format("yyyy", date); // 2013
 
-                //Data Atual
-                String meuDia = day2 + "/" + monthNumber + "/" + year;
+                    //Data Atual
+                    String meuDia = day2 + "/" + monthNumber + "/" + year;
 
-                if (data01.equals(meuDia)){
-                    interests+="\n"+reuniaoNome+"\n"+reuniaoData+"\n----";
+                    if (data01.equals(meuDia)){
+                        interests+="\n"+reuniaoNome+"\n"+reuniaoData+"\n----";
 
-                    Log.d("RAWDATA",reuniaoNome);
+                        Log.d("RAWDATA",reuniaoNome);
 
-                    meetNames = new MeetingModel[]{
-                            new MeetingModel("Name",reuniaoNome),
-                            new MeetingModel("Time",reuniaoData),
-                    };
+                        meetNames = new MeetingModel[]{
+                                new MeetingModel("Name",reuniaoNome),
+                                new MeetingModel("Time",reuniaoData),
+                        };
 
-                    //Silencia celular no horário da reunião
-                    if (dtc.hours==Integer.parseInt(hora)&&dtc.mins>=Integer.parseInt(minu)){
-                        //TODO: reunião como prioridade maior que outras alterações
-                        meetPrior = true;
-                        MeetingsStorage meetingsStorage = new MeetingsStorage();
-                        meetingsStorage.createFile();
-                    }else if (dtc.hours==Integer.parseInt(hora)+1&&dtc.mins<Integer.parseInt(minu)){
-                        meetPrior = true;
-                        MeetingsStorage meetingsStorage = new MeetingsStorage();
-                        meetingsStorage.createFile();
-                    }else {
-                        meetPrior = false;
+                        //Silencia celular no horário da reunião
+                        if (dtc.hours==Integer.parseInt(hora)&&dtc.mins>=Integer.parseInt(minu)){
+                            //TODO: reunião como prioridade maior que outras alterações
+                            meetPrior = true;
+                            MeetingsStorage meetingsStorage = new MeetingsStorage();
+                            meetingsStorage.createFile();
+                        }else if (dtc.hours==Integer.parseInt(hora)+1&&dtc.mins<Integer.parseInt(minu)){
+                            meetPrior = true;
+                            MeetingsStorage meetingsStorage = new MeetingsStorage();
+                            meetingsStorage.createFile();
+                        }else {
+                            meetPrior = false;
+                        }
                     }
                 }
             }
 
-            if ((Integer.parseInt(mins)%15)==1){
+            if ((Integer.parseInt(mins)%3)==1){
                 chngOnce = false;
+                readOnce = false;
             }
 
 
             //Check if user allowed changes
             final boolean allowChanges = prefs.getBoolean("allowChanges", true);
             if (allowChanges){
-                if ((Integer.parseInt(mins)%15)==0){
+                if ((Integer.parseInt(mins)%3)==0){
 
-                    if (meetPrior&& MeetingsUpdates.MEET_STATUS){
+                    if (meetPrior && MeetingsUpdates.MEET_STATUS){
                         MeetingsUpdates mu = new MeetingsUpdates();
                         mu.readA();
 
                         if (!chngOnce){
                             if (Globals.COL_VOLUME != Globals.METRIC_VOLUME){
-                                AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-
-                                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
-                                        Globals.METRIC_VOLUME,AudioManager.FLAG_PLAY_SOUND);
-                            }
-
-                            if (Globals.COL_RING != Globals.METRIC_RING){
-                                AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-
-                                audioManager.setRingerMode(Globals.METRIC_RING);
-                            }
-
-                            if (Globals.COL_BRIGHT != Globals.METRIC_BRIGHT){
-                                // The service is being created
-                                // set SCREEN_BRIGHTNESS
-                                android.provider.Settings.System.putInt(getContentResolver(),
-                                        Settings.System.SCREEN_BRIGHTNESS_MODE,
-                                        Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-
-                                android.provider.Settings.System.putInt(getContentResolver(),
-                                        android.provider.Settings.System.SCREEN_BRIGHTNESS,
-                                        Globals.COL_BRIGHT);
-                                /// start new Activity
-                                Intent intent = new Intent(getBaseContext(), DummyBrightnessActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.putExtra("brightness value", Globals.METRIC_BRIGHT);
-                                getApplication().startActivity(intent);
-
-                                chngOnce = true;
-                            }
-                        }
-
-                    }else {
-                        CheckMetrics cm = new CheckMetrics();
-                        cm.init();
-
-                        if (!chngOnce){
-
-                            if (CheckMetrics.TOTAL_METRICS>2){
-
-                                if (Globals.COL_VOLUME != Globals.METRIC_VOLUME){
+                                if (update_volume){
                                     AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
                                     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
                                             Globals.METRIC_VOLUME,AudioManager.FLAG_PLAY_SOUND);
                                 }
 
-                                if (Globals.COL_RING != Globals.METRIC_RING){
-                                    AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                                chngOnce = true;
+                            }
 
-                                    audioManager.setRingerMode(Globals.METRIC_RING);
+                            if (Globals.COL_RING != Globals.METRIC_RING){
+                                //PreferencesActivity.java
+                                if (meeting_ringmode){
+                                    AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                                    audioManager.setRingerMode(0);
+                                }else {
+                                    if (update_ringmode){
+                                        AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                                        audioManager.setRingerMode(Globals.METRIC_RING);
+                                    }
                                 }
 
-                                if (Globals.COL_BRIGHT != Globals.METRIC_BRIGHT){
+                                chngOnce = true;
+                            }
+
+                            if (Globals.COL_BRIGHT != Globals.METRIC_BRIGHT){
+                                if (update_bright){
                                     // The service is being created
                                     // set SCREEN_BRIGHTNESS
                                     android.provider.Settings.System.putInt(getContentResolver(),
@@ -371,6 +388,56 @@ public class BackgroundService extends Service {
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.putExtra("brightness value", Globals.METRIC_BRIGHT);
                                     getApplication().startActivity(intent);
+                                }
+
+                                chngOnce = true;
+                            }
+                        }
+
+                    }else {
+                        CheckMetrics cm = new CheckMetrics();
+                        cm.init();
+
+                        if (!chngOnce){
+                            if (CheckMetrics.TOTAL_METRICS>2){
+
+                                if (Globals.COL_VOLUME != Globals.METRIC_VOLUME){
+                                    if (update_volume){
+                                        AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+                                        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+                                                Globals.METRIC_VOLUME,AudioManager.FLAG_PLAY_SOUND);
+                                    }
+
+                                    chngOnce = true;
+                                }
+
+                                if (Globals.COL_RING != Globals.METRIC_RING){
+                                    if (update_ringmode){
+                                        AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                                        audioManager.setRingerMode(Globals.METRIC_RING);
+                                    }
+
+                                    chngOnce = true;
+                                }
+
+                                if (Globals.COL_BRIGHT != Globals.METRIC_BRIGHT){
+                                    if (update_bright){
+                                        // The service is being created
+                                        // set SCREEN_BRIGHTNESS
+                                        android.provider.Settings.System.putInt(getContentResolver(),
+                                                Settings.System.SCREEN_BRIGHTNESS_MODE,
+                                                Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+
+                                        android.provider.Settings.System.putInt(getContentResolver(),
+                                                android.provider.Settings.System.SCREEN_BRIGHTNESS,
+                                                Globals.COL_BRIGHT);
+                                        /// start new Activity
+                                        Intent intent = new Intent(getBaseContext(), DummyBrightnessActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        intent.putExtra("brightness value", Globals.METRIC_BRIGHT);
+                                        getApplication().startActivity(intent);
+                                    }
 
                                     chngOnce = true;
                                 }
@@ -416,6 +483,7 @@ public class BackgroundService extends Service {
 
             //TODO: '0(3) mins
             if ((Integer.parseInt(mins)%3)==0||Integer.parseInt(mins)==0){
+
                 //Clean Local Data Before
                 if (totalTestesBri==0){
                     Globals.CUR_BRI = "0.0";
@@ -454,6 +522,7 @@ public class BackgroundService extends Service {
                 ringMode = rc.checkRingmode(this);
 
                 if (!readOnce){
+
                     startCollect();
                     readOnce = true;
                 }
@@ -471,6 +540,8 @@ public class BackgroundService extends Service {
                 + "/Documents/Trovi/Users/Places/"+ "/" + "listPlaces.txt");
 
         try{
+
+            Log.d("RAWDATA","deveria funcionar");
             int numLine = 0;
             if (file.exists()) {
                 is = new FileInputStream(file);
@@ -514,6 +585,8 @@ public class BackgroundService extends Service {
     }
 
     public void sendAll(){
+
+        Log.d("RAWDATA","deveria enviar");
         //Save Time
         DateTimeCollect dtc = new DateTimeCollect();
         Globals.LINE_TIME = dtc.LINE_TIME();
@@ -569,22 +642,38 @@ public class BackgroundService extends Service {
         HeadphoneCollect hc = new HeadphoneCollect();
         Globals.LINE_HEADPHONE = hc.checkHeadphone(this);
 
-        ADB adb = new ADB();
-        adb.createADB();
-        BDB bdb = new BDB();
-        bdb.createBDB();
-        CDB cdb = new CDB();
-        cdb.createDB();
-        DDB ddb = new DDB();
-        ddb.createDB();
-        EDB edb = new EDB();
-        edb.createDB();
-        FDB fdb = new FDB();
-        fdb.createDB();
-        GDB gdb = new GDB();
-        gdb.createDB();
-        HDB hdb = new HDB();
-        hdb.createDB();
+        if (collected_time){
+            ADB adb = new ADB();
+            adb.createADB();
+        }
+        if (collected_battery){
+            BDB bdb = new BDB();
+            bdb.createBDB();
+        }
+        if (collected_connection){
+            CDB cdb = new CDB();
+            cdb.createDB();
+        }
+        if (collected_localvolume){
+            DDB ddb = new DDB();
+            ddb.createDB();
+        }
+        if (collected_localbright){
+            EDB edb = new EDB();
+            edb.createDB();
+        }
+        if (collected_saving) {
+            FDB fdb = new FDB();
+            fdb.createDB();
+        }
+        if (collected_bluetooth){
+            GDB gdb = new GDB();
+            gdb.createDB();
+        }
+        if (collected_headphone){
+            HDB hdb = new HDB();
+            hdb.createDB();
+        }
 
     }
 

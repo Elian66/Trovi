@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,11 +42,31 @@ public class ProfileActivity extends AppCompatActivity {
         preferences.setTypeface(poppins_regular);
         exit.setTypeface(poppins_regular);
 
-        name.setText(Globals.CURRENT_USER.getName());
+        if (Globals.CURRENT_USER!=null){
+            name.setText(Globals.CURRENT_USER.getName());
+        }
+
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this,EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        preferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this,PreferencesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this,HomeActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -61,5 +82,19 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent msg) {
+
+        switch(keyCode) {
+            case(KeyEvent.KEYCODE_BACK):
+                Intent a1_intent = new Intent(this, HomeActivity.class);
+                startActivity(a1_intent);
+                finish();
+                return true;
+
+        }
+        return false;
     }
 }

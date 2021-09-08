@@ -77,4 +77,110 @@
     <string name="profile_preferences">Preferências</string>
     <string name="profile_exit">Sair</string>
 
+    <string name="edit_name">Nome</string>
+    <string name="edit_mail">E-mail</string>
+    <string name="edit_password">Redefinir senha</string>
+    <string name="edit_btn">Atualizar dados</string>
+
+    <string name="preferences">Preferências</string>
+    <string name="pref_title">Coletar dados</string>
+
+    <string name="pref_collect_01">Dados coletados</string>
+    <string name="pref_collect_02">Grau de importância</string>
+    <string name="pref_collect_03">Permissões</string>
+
+    <string name="pref_collect_title">Quais dados você gostaria de coletar?</string>
+    <string name="pref_collect_subtitle_01">Os dados coletados ajudarão o aplicativo a entender o contexto em que você está inserido, aprendendo seu modo de usar seu smartphone para programá-lo do jeito mais confortável para você</string>
+    <string name="pref_collect_subtitle_02">Devem ser selecionadas no mínimo duas opções. Quanto mais forem selecionadas, melhor o desempenho do aplicativo</string>
+    <string name="pref_collect_location">Localização</string>
+    <string name="pref_collect_time">Horário</string>
+    <string name="pref_collect_battery">Bateria</string>
+    <string name="pref_collect_connection">Modo de conexão</string>
+    <string name="pref_collect_saving">Economia da energia</string>
+    <string name="pref_collect_localbright">Brilho ambiente</string>
+    <string name="pref_collect_localvolume">Som ambiente</string>
+    <string name="pref_collect_bluetooth">Bluetooth</string>
+    <string name="pref_collect_headphone">Fones de ouvido</string>
+
+    <string name="pref_importance_title">Prioridade de cada informação coletada</string>
+    <string name="pref_importance_subtitle">Selecione quais dados você considera mais importantes</string>
+    <string name="pref_importance_location">Localização</string>
+    <string name="pref_importance_time">Horário</string>
+    <string name="pref_importance_battery">Bateria</string>
+    <string name="pref_importance_connection">Modo de conexão</string>
+    <string name="pref_importance_saving">Economia da energia</string>
+    <string name="pref_importance_localbright">Brilho ambiente</string>
+    <string name="pref_importance_localvolume">Som ambiente</string>
+    <string name="pref_importance_bluetooth">Bluetooth</string>
+    <string name="pref_importance_headphone">Fones de ouvido</string>
+
+    <string name="pref_importance_01">1</string>
+    <string name="pref_importance_02">2</string>
+    <string name="pref_importance_03">3</string>
+
+    <string name="pref_permissions_title">Permissões</string>
+    <string name="pref_permissions_subtitle">Ative as permissões para um melhor funcionamento do Trovi</string>
+    <string name="pref_permissions_location">Localização</string>
+    <string name="pref_permissions_microphone">Microfone</string>
+    <string name="pref_permissions_storage">Armazenamento</string>
+    <string name="pref_permissions_calendar">Calendário</string>
+    <string name="pref_permissions_overlay">Sobrepor</string>
+    <string name="pref_permissions_disturb">Não perturbe</string>
+    <string name="pref_permissions_write">Gravar dados</string>
+
+    <string name="pref_changes_title">Atualizações automáticas</string>
+
+    <string name="pref_update_title">Dados para atualizar</string>
+    <string name="pref_update_subtitle">Estas são as configurações do sistema que você permite que o Trovi faça alterações</string>
+    <string name="pref_update_ringmode">Modo de toque</string>
+    <string name="pref_update_volume">Volume</string>
+    <string name="pref_update_bright">Brilho da tela</string>
+
+    <string name="pref_bright_title">Sensibilidade do Brilho</string>
+    <string name="pref_bright_autochange_title">Alterar automaticamente o brilho após mudanças maiores que o normal</string>
+    <string name="pref_bright_autochange_subtitle">Ativa o modo automático caso você saia para um ambiente muito mais claro ou escuro</string>
+    <string name="pref_bright_saving_title">Poupar bateria reduzindo o brilho</string>
+    <string name="pref_bright_saving_subtitle">Após seu celular atingir metade da bateria consumida, esta opção reduz um pouco o brilho da tela, buscando poupar sua vida útil e manter uma visualização confortável</string>
+    <string name="pref_bright_confortable_title">Visualização confortável</string>
+    <string name="pref_bright_confortable_subtitle">Ativa essa opção durante a noite ao identificar uma luminosidade menor</string>
+
+    <string name="pref_volume_title">Volume</string>
+    <string name="pref_volume_meetings">Reduzir volume durante reuniões agendadas no calendário</string>
+    <string name="pref_volume_louder">Aumentar volume em ambientes mais barulhentos</string>
+
+    <string name="pref_ringmode_title">Modo de Toque</string>
+    <string name="pref_ringmode_meetings">Silenciar durante reuniões agendadas no calendário</string>
+
+    <string name="pref_meetings_title">Reuniões e Eventos</string>
+    <string name="pref_meetings_check">Deve ser feita uma coleta especial durante reuniões agendadas no calendário</string>
+
+    <string name="pref_places_title">Locais Encontrados</string>
+    <string name="pref_places_ask_title">Perguntar a cada novo local encontrado</string>
+    <string name="pref_places_ask_subtitle">Cada vez que você for para outro lugar, o Trovi perguntará que tipo de local é este, para uma performance ainda melhor do aplicativo</string>
+
+    <string name="newplace_title">Identificamos um novo local! Você gostaria de salvá-lo no Trovi?</string>
+    <string name="newplace_subtitle">Qual o tipo do local atual?</string>
+    <string name="newplace_cancel">Cancelar</string>
+    <string name="newplace_save">Salvar</string>
+
+    <string name="pref_place_01">Casa</string>
+    <string name="pref_place_02">Trabalho</string>
+    <string name="pref_place_03">Escola</string>
+    <string name="pref_place_04">Cinema</string>
+    <string name="pref_place_05">Shopping</string>
+    <string name="pref_place_06">Cinema</string>
+    <string name="pref_place_07">Igreja</string>
+    <string name="pref_place_08">Parque de diversões</string>
+    <string name="pref_place_09">Supermercado</string>
+    <string name="pref_place_10">Hospital</string>
+    <string name="pref_place_11">Hotel</string>
+    <string name="pref_place_12">Restaurante</string>
+    <string name="pref_place_13">Estacionamento</string>
+    <string name="pref_place_14">Rua</string>
+    <string name="pref_place_15">Outro</string>
+
+    <string name="old_password">Digite sua senha atual</string>
+    <string name="new_password">Digite sua nova senha</string>
+    <string name="confirm_password">Confirme sua nova senha</string>
+
 </resources>

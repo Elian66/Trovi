@@ -28,14 +28,7 @@ public class OnboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_onboard);
         getWindow().setStatusBarColor(this.getResources().getColor(R.color.background));
 
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.putBoolean("firstCollect", true);
-        editor.putBoolean("firstChanges", true);
-        editor.putBoolean("allowCollect", false);
-        editor.putBoolean("allowChanges", false);
-        editor.apply();
+        createSharedVars();
 
         initAll();
 
@@ -83,6 +76,53 @@ public class OnboardActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    private void createSharedVars(){
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.putBoolean("firstCollect", true);
+        editor.putBoolean("firstChanges", true);
+        editor.putBoolean("allowCollect", false);
+        editor.putBoolean("allowChanges", false);
+
+        editor.putBoolean("collected_data", true);
+
+        editor.putBoolean("collected_time", true);
+        editor.putBoolean("collected_battery", true);
+        editor.putBoolean("collected_connection", true);
+        editor.putBoolean("collected_saving", true);
+        editor.putBoolean("collected_localbright", true);
+        editor.putBoolean("collected_localvolume", true);
+        editor.putBoolean("collected_bluetooth", true);
+        editor.putBoolean("collected_headphone", true);
+
+        editor.putBoolean("collected_importance", true);
+
+        editor.putString("importance_time", "1");
+        editor.putString("importance_battery", "1");
+        editor.putString("importance_connection", "1");
+        editor.putString("importance_saving", "1");
+        editor.putString("importance_localbright", "1");
+        editor.putString("importance_localvolume", "1");
+        editor.putString("importance_bluetooth", "1");
+        editor.putString("importance_headphone", "1");
+
+        editor.putBoolean("update_volume", true);
+        editor.putBoolean("update_bright", true);
+        editor.putBoolean("update_ringmode", true);
+
+        editor.putBoolean("brightness_sensibility", false);
+        editor.putBoolean("save_battery_bright", false);
+        editor.putBoolean("comfortable_view", false);
+        editor.putBoolean("louder_volume", false);
+        editor.putBoolean("meeting_ringmode", false);
+        editor.putBoolean("meeting_prior", false);
+        editor.putBoolean("save_places", false);
+
+        editor.apply();
 
     }
 

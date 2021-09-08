@@ -40,7 +40,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MeetingVie
         holder.time.setText(myListData.getTime());
     }
 
-
     @Override
     public int getItemCount() {
         return listdata.length;

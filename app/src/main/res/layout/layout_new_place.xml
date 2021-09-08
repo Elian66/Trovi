@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingHorizontal="32dp"
+    android:paddingVertical="32dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="320dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/newplace_title"
+                android:text="@string/newplace_title"
+                android:textColor="@color/textColor"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:id="@+id/newplace_subtitle"
+                android:text="@string/newplace_subtitle"
+                android:textColor="@color/textColor"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:id="@+id/newplace_radios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_01"
+                        android:text="@string/pref_place_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_02"
+                        android:text="@string/pref_place_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_03"
+                        android:text="@string/pref_place_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_04"
+                        android:text="@string/pref_place_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_05"
+                        android:text="@string/pref_place_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_06"
+                        android:text="@string/pref_place_06"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_07"
+                        android:text="@string/pref_place_07"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_08"
+                        android:text="@string/pref_place_08"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_09"
+                        android:text="@string/pref_place_09"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_10"
+                        android:text="@string/pref_place_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_11"
+                        android:text="@string/pref_place_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_12"
+                        android:text="@string/pref_place_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_13"
+                        android:text="@string/pref_place_13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_14"
+                        android:text="@string/pref_place_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:textSize="16dp"
+                        android:id="@+id/pref_place_15"
+                        android:text="@string/pref_place_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_below="@id/scrollView"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textAllCaps="false"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/border_white"
+            android:text="@string/newplace_cancel"
+            android:id="@+id/newplace_cancel"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textAllCaps="false"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/border_btn"
+            android:text="@string/newplace_save"
+            android:id="@+id/newplace_save"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

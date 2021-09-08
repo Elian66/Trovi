@@ -33,7 +33,13 @@
         android:roundIcon="@drawable/ic_icon_trovi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Screens.ProfileActivity"></activity>
+        <activity
+            android:name=".Screens.PreferencesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Screens.EditProfileActivity"
+            android:exported="true" />
+        <activity android:name=".Screens.ProfileActivity" />
 
         <service
             android:name=".Services.ChangeService"

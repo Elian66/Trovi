@@ -21,6 +21,8 @@ import java.util.Set;
 public class ADB {
     public void createADB(){
 
+        Log.d("RAWDATA","cria metrica");
+
         String completePath = "adb."+Globals.LINE_LOCATION+"."+Globals.LINE_TIME+"/";
 
         String directory_path = Environment.getExternalStorageDirectory().getPath()

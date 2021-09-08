@@ -60,7 +60,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     ADB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -96,7 +96,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     BDB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -132,7 +132,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     CDB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -168,7 +168,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     DDB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -204,7 +204,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     EDB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -240,7 +240,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     FDB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -276,7 +276,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     GDB_STATUS = true;
                     TOTAL_METRICS++;
 
@@ -312,7 +312,7 @@ public class CheckMetrics {
                     line = reader.readLine();
                 }
 
-                if (numLine>39){
+                if (numLine>4){
                     HDB_STATUS = true;
                     TOTAL_METRICS++;
 

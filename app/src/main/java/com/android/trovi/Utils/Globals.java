@@ -1,11 +1,14 @@
 package com.android.trovi.Utils;
 
+import com.android.trovi.Models.MeetingModel;
 import com.android.trovi.Models.UserModel;
 
 public class Globals {
     public static final String USER_KEY = "User";
     public static final String PWD_KEY = "Password";
     public static UserModel CURRENT_USER;
+
+    public static MeetingModel[] meetNames;
 
     public static int MIN_METRICS = 2;
 
@@ -26,7 +29,6 @@ public class Globals {
     public static String LINE_CONNECTION = "";
     public static String LINE_LOCALVOL = "";
     public static String LINE_LOCALBRI = "";
-    public static String LINE_ROUTER = "";
     public static String LINE_HEADPHONE = "";
     public static String LINE_BLUETOOTH = "";
 

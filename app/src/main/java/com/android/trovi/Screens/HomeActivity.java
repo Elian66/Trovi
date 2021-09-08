@@ -1,5 +1,7 @@
 package com.android.trovi.Screens;
 
+import static com.android.trovi.Utils.Globals.meetNames;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,7 @@ import android.media.AudioManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +35,12 @@ import com.android.trovi.Services.BackgroundService;
 import com.android.trovi.Utils.Globals;
 import com.android.trovi.ViewHolders.MyListAdapter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import io.paperdb.Paper;
 
@@ -45,6 +53,9 @@ public class HomeActivity extends AppCompatActivity {
     TextView home_changes_text,home_changes_status,home_changes_button;
     ImageView home_ring,home_volume,home_bright,home_battery,home_settings,home_nomeet;
     int level;
+
+    List<String> meetInfo = new ArrayList<String>();
+    List<String> meetDate = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +113,13 @@ public class HomeActivity extends AppCompatActivity {
                     home_collect_status.setText(R.string.home_collect_status_01);
                     home_collect_button.setText(R.string.home_collect_button_01);
                     editor.putBoolean("allowCollect", false);
+                    editor.apply();
                 }else {
                     home_collect_status.setText(R.string.home_collect_status_02);
                     home_collect_button.setText(R.string.home_collect_button_02);
                     editor.putBoolean("allowCollect", true);
+                    editor.apply();
                 }
-
-                editor.apply();
 
             }
         });
@@ -124,47 +135,14 @@ public class HomeActivity extends AppCompatActivity {
                 if (allowChanges){
                     home_changes_status.setText(R.string.home_changes_status_01);
                     home_changes_button.setText(R.string.home_changes_button_01);
-                    editor.putBoolean("allowCollect", false);
+                    editor.putBoolean("allowChanges", false);
+                    editor.apply();
                 }else {
-                    if (CheckMetrics.TOTAL_METRICS>Globals.MIN_METRICS){
-                        home_changes_status.setText(R.string.home_changes_status_02);
-                        home_changes_button.setText(R.string.home_changes_button_02);
-                        editor.putBoolean("allowCollect", true);
-                    }else {
-                        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(HomeActivity.this);
-                        final LayoutInflater inflater = LayoutInflater.from(HomeActivity.this);
-                        final View layout_info_changes = inflater.inflate(R.layout.layout_info_changes, null);
-
-                        final TextView home_ask_title,home_ask_message;
-                        final Button home_ask_button;
-
-                        home_ask_title = layout_info_changes.findViewById(R.id.home_ask_title);
-                        home_ask_message = layout_info_changes.findViewById(R.id.home_ask_message);
-                        home_ask_button = layout_info_changes.findViewById(R.id.home_ask_button);
-
-                        Typeface poppins_semibold = Typeface.createFromAsset(getAssets(), "fonts/Poppins-SemiBold.ttf");
-                        Typeface poppins_regular = Typeface.createFromAsset(getAssets(), "fonts/Poppins-Regular.ttf");
-
-                        home_ask_title.setTypeface(poppins_semibold);
-                        home_ask_message.setTypeface(poppins_regular);
-                        home_ask_button.setTypeface(poppins_regular);
-
-                        home_ask_button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent intent1 = new Intent(HomeActivity.this,HomeActivity.class);
-                                startActivity(intent1);
-                            }
-                        });
-
-                        alertDialog.setView(layout_info_changes);
-
-                        final AlertDialog alertDialog1 = alertDialog.create();
-                        alertDialog1.show();
-                    }
+                    home_changes_status.setText(R.string.home_changes_status_02);
+                    home_changes_button.setText(R.string.home_changes_button_02);
+                    editor.putBoolean("allowChanges", true);
+                    editor.apply();
                 }
-
-                editor.apply();
 
             }
         });
@@ -264,19 +242,14 @@ public class HomeActivity extends AppCompatActivity {
             home_changes_status.setText(R.string.home_changes_status_01);
             home_changes_button.setText(R.string.home_changes_button_01);
         }else{
-            if (CheckMetrics.TOTAL_METRICS>Globals.MIN_METRICS){
-                home_collect_status.setText(R.string.home_changes_status_02);
-                home_collect_button.setText(R.string.home_changes_button_02);
-            }else{
-                home_collect_status.setText(R.string.home_changes_status_03);
-                home_collect_button.setText(R.string.home_changes_button_03);
-            }
+            home_changes_status.setText(R.string.home_changes_status_02);
+            home_changes_button.setText(R.string.home_changes_button_02);
         }
 
         if (firstCollect){
-            //AlertDialog alertDialog = new AlertDialog.Builder(this);
-
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(HomeActivity.this);
+            alertDialog.setCancelable(false);
+
             LayoutInflater inflater = LayoutInflater.from(HomeActivity.this);
             final View layout_allow_collect = inflater.inflate(R.layout.layout_allow_collect, null);
 
@@ -295,6 +268,11 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     editor.putBoolean("allowCollect", true);
+                    editor.apply();
+
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                 }
             });
 
@@ -303,14 +281,11 @@ public class HomeActivity extends AppCompatActivity {
 
             alertDialog.setView(layout_allow_collect);
 
-            final AlertDialog alertDialog1 = alertDialog.create();
-
-            alertDialog1.show();
-
         }
 
         if (firstChanges){
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(HomeActivity.this);
+            alertDialog.setCancelable(false);
             LayoutInflater inflater = LayoutInflater.from(HomeActivity.this);
             final View layout_allow_collect = inflater.inflate(R.layout.layout_allow_changes, null);
 
@@ -329,6 +304,10 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     editor.putBoolean("allowChanges", true);
+                    editor.apply();
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                 }
             });
 
@@ -336,10 +315,6 @@ public class HomeActivity extends AppCompatActivity {
             editor.apply();
 
             alertDialog.setView(layout_allow_collect);
-
-            final AlertDialog alertDialog1 = alertDialog.create();
-
-            alertDialog1.show();
 
         }
 
@@ -361,57 +336,169 @@ public class HomeActivity extends AppCompatActivity {
 
         //MEET
         String interests = "";
-        for(String str: MeetingsCollect.readCalendarEvent(getBaseContext())){
-            String[] separated2 = str.split(":@:");
-            final String reuniaoNome = separated2[0];
-            final String reuniaoData = separated2[1];
+        for(int i=0;i<MeetingsCollect.readCalendarEvent(getBaseContext()).size();i++){
 
-            String[] rDataSplit = reuniaoData.split(" ");
-            final String data01 = rDataSplit[0];
-            final String data02 = rDataSplit[1];
-            final String data03 = rDataSplit[2];
+            for (Iterator<String> it = MeetingsCollect.readCalendarEvent(getBaseContext()).iterator(); it.hasNext(); ) {
+                String str = it.next();
 
-            String[] horaSplit = data02.split(":");
-            String hora = "";
-            if (data03.equals("AM")){
-                hora = horaSplit[0];
-            }else{
-                hora = Integer.toString(12+Integer.parseInt(horaSplit[0]));
+                String[] separated2 = str.split(":@:");
+                final String reuniaoNome = separated2[0];
+                final String reuniaoData = separated2[1];
+
+                String[] rDataSplit = reuniaoData.split(" ");
+                final String data01 = rDataSplit[0];
+                final String data02 = rDataSplit[1];
+                final String data03 = rDataSplit[2];
+
+                String[] horaSplit = data02.split(":");
+                String hora = "";
+                if (data03.equals("AM")){
+                    hora = horaSplit[0];
+                }else{
+                    hora = Integer.toString(12+Integer.parseInt(horaSplit[0]));
+                }
+                String minu = horaSplit[1];
+                String segu = horaSplit[2];
+
+                Date date = new Date();
+                String dayOfTheWeek = (String) DateFormat.format("EEEE", date); // Thursday
+                String day2         = (String) DateFormat.format("dd",   date); // 20
+                String monthString  = (String) DateFormat.format("MMM",  date); // Jun
+                String monthNumber  = (String) DateFormat.format("MM",   date); // 06
+                String year         = (String) DateFormat.format("yyyy", date); // 2013
+
+                //Data Atual
+                String meuDia = day2 + "/" + monthNumber + "/" + year;
+
+                MeetingModel[] meetIt = new MeetingModel[]{};
+
+                if (data01.equals(meuDia)){
+                    interests+="\n"+reuniaoNome+"\n"+reuniaoData+"\n----";
+                    //Globals.meetNames interests;
+                    if (!meetInfo.contains(reuniaoNome)){
+                        meetInfo.add(reuniaoNome);
+                        meetDate.add(reuniaoData);
+                    }
+                }
             }
-            String minu = horaSplit[1];
-            String segu = horaSplit[2];
+        }
 
-            Date date = new Date();
-            String dayOfTheWeek = (String) DateFormat.format("EEEE", date); // Thursday
-            String day2         = (String) DateFormat.format("dd",   date); // 20
-            String monthString  = (String) DateFormat.format("MMM",  date); // Jun
-            String monthNumber  = (String) DateFormat.format("MM",   date); // 06
-            String year         = (String) DateFormat.format("yyyy", date); // 2013
+        List<MeetingModel> meModels = new ArrayList<>();
 
-            //Data Atual
-            String meuDia = day2 + "/" + monthNumber + "/" + year;
+        meModels.clear();
+        for (int i = 0; i<meetInfo.size();i++){
 
-            if (data01.equals(meuDia)){
-                interests+="\n"+reuniaoNome+"\n"+reuniaoData+"\n----";
-
-                final MeetingModel[] meetNames = new MeetingModel[]{
-                        new MeetingModel(reuniaoNome,reuniaoData),
+            if (meetInfo.size()==1){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0))
                 };
-
-                if (meetNames!=null){
-                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_meetings);
-                    MyListAdapter adapter = new MyListAdapter(meetNames);
-                    recyclerView.setHasFixedSize(true);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    recyclerView.setAdapter(adapter);
-                }
-
-                if (interests.isEmpty()){
-                    home_nomeet.setVisibility(View.VISIBLE);
-                }else {
-                    home_nomeet.setVisibility(View.GONE);
-                }
             }
+            else if (meetInfo.size()==2){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1))
+                };
+            }
+            else if (meetInfo.size()==3){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2))
+                };
+            }
+            else if (meetInfo.size()==4){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3))
+                };
+            }
+            else if (meetInfo.size()==5){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3)),
+                        new MeetingModel(meetInfo.get(4),meetDate.get(4))
+                };
+            }
+            else if (meetInfo.size()==6){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3)),
+                        new MeetingModel(meetInfo.get(4),meetDate.get(4)),
+                        new MeetingModel(meetInfo.get(5),meetDate.get(5))
+                };
+            }
+            else if (meetInfo.size()==7){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3)),
+                        new MeetingModel(meetInfo.get(4),meetDate.get(4)),
+                        new MeetingModel(meetInfo.get(5),meetDate.get(5)),
+                        new MeetingModel(meetInfo.get(6),meetDate.get(6))
+                };
+            }
+            else if (meetInfo.size()==8){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3)),
+                        new MeetingModel(meetInfo.get(4),meetDate.get(4)),
+                        new MeetingModel(meetInfo.get(5),meetDate.get(5)),
+                        new MeetingModel(meetInfo.get(6),meetDate.get(6)),
+                        new MeetingModel(meetInfo.get(7),meetDate.get(7))
+                };
+            }
+            else if (meetInfo.size()==9){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3)),
+                        new MeetingModel(meetInfo.get(4),meetDate.get(4)),
+                        new MeetingModel(meetInfo.get(5),meetDate.get(5)),
+                        new MeetingModel(meetInfo.get(6),meetDate.get(6)),
+                        new MeetingModel(meetInfo.get(7),meetDate.get(7)),
+                        new MeetingModel(meetInfo.get(8),meetDate.get(8))
+                };
+            }
+            else if (meetInfo.size()==10){
+                meetNames = new MeetingModel[]{
+                        new MeetingModel(meetInfo.get(0),meetDate.get(0)),
+                        new MeetingModel(meetInfo.get(1),meetDate.get(1)),
+                        new MeetingModel(meetInfo.get(2),meetDate.get(2)),
+                        new MeetingModel(meetInfo.get(3),meetDate.get(3)),
+                        new MeetingModel(meetInfo.get(4),meetDate.get(4)),
+                        new MeetingModel(meetInfo.get(5),meetDate.get(5)),
+                        new MeetingModel(meetInfo.get(6),meetDate.get(6)),
+                        new MeetingModel(meetInfo.get(7),meetDate.get(7)),
+                        new MeetingModel(meetInfo.get(8),meetDate.get(8)),
+                        new MeetingModel(meetInfo.get(9),meetDate.get(9))
+                };
+            }
+
+        }
+
+        if (meetNames!=null){
+            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_meetings);
+            MyListAdapter adapter = new MyListAdapter(meetNames);
+
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(adapter);
+        }
+
+        if (interests.isEmpty()){
+            home_nomeet.setVisibility(View.VISIBLE);
+        }else {
+            home_nomeet.setVisibility(View.GONE);
         }
 
     }
